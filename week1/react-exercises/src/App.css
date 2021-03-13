@@ -24,6 +24,32 @@
   color: white;
 }
 
+.hobbies {
+  border-bottom: 1px solid #eee;
+}
+
+.customer-service {
+  width: 95vw;
+  margin-top: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.customer-service .el {
+  padding: 0 40px 0 40px;
+  width: 25%;
+}
+
+.customer-service .el p {
+  font-size: 1.5rem;
+}
+
+.customer-service .el img {
+  width: 130px;
+}
+
 .App-link {
   color: #61dafb;
 }
