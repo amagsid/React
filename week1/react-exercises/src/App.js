@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import HobbyList from "./1. ExtremeHobbies";
 import CustomerServiceEL from "./2. Perfect-customer-service";
+import Counter from "./3.HigherThan";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
 
         <HobbyList />
         <CustomerServiceEL />
+        <Counter />
       </header>
     </div>
   );

@@ -1,26 +1,22 @@
+import React, { useState } from "react";
+
 const Counter = () => {
-  const count = 0;
-  const setCount = () => {};
+  const [count, setCount] = useState(0);
+  const increaseCount = () => setCount(count + 1);
+  const feedback = count > 10 ? "It's higher than 10!" : "Keep counting...";
+  return (
+    <div>
+      <p> {feedback} </p>
+      <Count currentCount={count} />
+      <Button setCount={increaseCount} />
+    </div>
+  );
 };
 
-// import React, { useState } from 'react';
+const Count = (props) => <p> {props.currentCount} </p>;
 
-// function Example() {
-//   // Declare a new state variable, which we'll call "count"
-//   const [count, setCount] = useState(0);
+const Button = (props) => (
+  <button onClick={() => props.setCount(props.setCount)}>Add 1!</button>
+);
 
-//   return (
-//     <div>
-//       <p>You clicked {count} times</p>
-//       <button onClick={() => setCount(count + 1)}>
-//         Click me
-//       </button>
-//     </div>
-//   );
-// }
-
-const Count = () => {};
-
-const Button = () => {
-  return <button onClick=""> Add 1!</button>;
-};
+export default Counter;
