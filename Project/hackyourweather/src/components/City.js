@@ -8,7 +8,7 @@ const City = ({
   },
 }) => {
   return (
-    <div>
+    <div className="city">
       <WeatherInfo city={city} name={name} country={country} />
     </div>
   );

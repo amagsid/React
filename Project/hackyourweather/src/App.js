@@ -5,9 +5,9 @@ import City from "./components/City";
 function App() {
   return (
     <div className="App">
+      <h1> Weather</h1>
       {weatherData.map((city) => {
-        console.log(city);
-        return <City city={city} />;
+        return <City key={city.id} city={city} />;
       })}
     </div>
   );

@@ -8,7 +8,7 @@
       {
         "id": 801,
         "main": "Clouds",
-        "description": "few clouds",
+        "description": "Few clouds",
         "icon": "02d"
       }
     ],
@@ -51,7 +51,7 @@
       {
         "id": 300,
         "main": "Drizzle",
-        "description": "light intensity drizzle",
+        "description": "Light intensity drizzle",
         "icon": "09d"
       }
     ],
@@ -90,7 +90,7 @@
       {
         "id": 803,
         "main": "Clouds",
-        "description": "broken clouds",
+        "description": "Broken clouds",
         "icon": "04n"
       }
     ],
@@ -121,7 +121,7 @@
   {
     "coord": { "lon": 72.85, "lat": 19.01 },
     "weather": [
-      { "id": 721, "main": "Sunny", "description": "sunny", "icon": "50d" }
+      { "id": 721, "main": "Sunny", "description": "Sunny", "icon": "50d" }
     ],
     "base": "stations",
     "main": {
@@ -153,7 +153,7 @@
       {
         "id": 802,
         "main": "Clouds",
-        "description": "scattered clouds",
+        "description": "Scattered clouds",
         "icon": "03n"
       }
     ],
