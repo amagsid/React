@@ -1,95 +1,57 @@
-// import { useState, useEffect } from "react";
-
-// const FetchDoggies = () => {
-//   const [hasError, setError] = useState(false);
-//   const [isLoading, setLoading] = useState(false);
-//   const [dogPic, setDogPic] = useState("");
-
-//   const [buttonClickCOunt, setbuttonClickCOunt] = useState(0);
-//   const dogURL = `https://dog.ceo/api/breeds/image/random`;
-
-//   const FetchData = (url) => {
-//     setLoading(true);
-//     fetch(url)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setDogPic(data.message);
-//         setLoading(false);
-//       })
-//       .catch((err) => {
-//         setError(err);
-//         setLoading(false);
-//       });
-//   };
-
-//   useEffect(() => {
-//     FetchData(dogURL);
-//   }, [buttonClickCOunt]);
-
-//   return (
-//     <div className="doggies component">
-//       <h1> Fetch me Doggies</h1>
-//       <button
-//         className="btn"
-//         onClick={() => setbuttonClickCOunt(buttonClickCOunt + 1)}
-//       >
-//         fetch me doggies
-//       </button>
-
-//       {isLoading && <p> Loading image... </p>}
-//       {!hasError && <img className="dog-pic" src={dogPic} alt="doggies" />}
-
-//       {hasError && <p> something went wrong</p>}
-//     </div>
-//   );
-// };
-
-// export default FetchDoggies;
-
 import { useState, useEffect } from "react";
 
 const DogGallery = () => {
   const [dogPhoto, setDogPhoto] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [hasError, setError] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
 
   const getDogPhoto = () => {
     setLoading(true);
     fetch("https://dog.ceo/api/breeds/image/random")
       .then((res) => res.json())
       .then((data) => {
+        setLoading(true);
+        setDogPhoto((prevArr) => [...prevArr, data.message]);
         setLoading(false);
-        console.log("firing from fetch");
-        console.log(data.message);
-        setDogPhoto(dogPhoto.push(data.message));
+        console.log(dogPhoto);
       })
       .catch((err) => setError(err));
   };
 
-  useEffect(() => {
-    getDogPhoto();
-    console.log(clickCount);
-  }, [clickCount]);
-
   return (
-    <div className="container">
-      <Button setClickCount={setClickCount} clickCount={clickCount} />
+    <div className="container dog ">
+      {isLoading && <p clsssName="loading">loading..</p>}
+
+      <Button getDogPhoto={getDogPhoto} />
+
+      {dogPhoto.length == 0 && <p> click to get your first dog</p>}
+
+      {hasError && <p>something went wrong</p>}
+
+      <div className="dog-photos">
+        {dogPhoto.map((photo) => (
+          <DogPhoto photo={photo} />
+        ))}
+      </div>
     </div>
   );
 };
 
-const DogPhoto = () => {};
+//dog photo component
+const DogPhoto = ({ photo }) => {
+  return <img className="dog-photo" src={photo} alt="doggie" />;
+};
 
-const Button = ({ setClickCount, clickCount }) => {
+//button component
+const Button = ({ getDogPhoto }) => {
   return (
     <button
       className="btn"
       onClick={() => {
-        setClickCount(clickCount + 1);
+        getDogPhoto();
       }}
     >
-      Get a dog
+      Get a dog!
     </button>
   );
 };

@@ -33,6 +33,23 @@
   width: 75%;
 }
 
+.dog-photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dog-photo {
+  max-height: 200px;
+}
+
+.loading {
+  position: fixed;
+}
+
+.container.dog {
+  background-color: #61dafb;
+}
+
 .btn {
   padding: 20px;
   font-size: 1rem;
