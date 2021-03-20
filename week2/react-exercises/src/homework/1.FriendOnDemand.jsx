@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 const Friend = () => {
   const [friend, setFriend] = useState(null);
+  const [friendEmoji, setFriendEmoji] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [hasError, setError] = useState(false);
-  const [clickCount, setClickCount] = useState({});
+  const [clickCount, setClickCount] = useState(0);
 
   const getFriend = () => {
     setLoading(true);
@@ -12,6 +13,7 @@ const Friend = () => {
       .then((res) => res.json())
       .then((friend) => {
         setFriend(friend.results[0]);
+        setFriendEmoji((prevArr) => [...prevArr, "🙋🏻‍♂️"]);
         setLoading(false);
       })
       .catch((err) => setError(err));
@@ -22,11 +24,23 @@ const Friend = () => {
   }, [clickCount]);
 
   return (
-    <div className="container">
+    <div className="container friends">
       <Button setClickCount={setClickCount} clickCount={clickCount} />
-      {isLoading && <p> loading...</p>}
+      {isLoading && <p className="loading"> loading...</p>}
       {hasError && <p> something went wrong</p>}
       {friend && <FriendProfile friend={friend} />}
+
+      <p>
+        {clickCount == 0
+          ? `You already got 1 freind`
+          : `by now you have ${clickCount + 1} friends`}
+      </p>
+
+      <div className="friend-emoji">
+        {friendEmoji.map((emo) => (
+          <span>{emo} </span>
+        ))}
+      </div>
     </div>
   );
 };
@@ -46,13 +60,17 @@ const FriendProfile = ({
   return (
     <ul>
       <li>
-        Name: {first} {last}
+        <span> Name:</span> {first} {last}
       </li>
       <li>
-        Address: {number} {street}, {city}, {country}
+        <span> Address: </span> {number} {street}, {city}, {country}
       </li>
-      <li>email: {email}</li>
-      <li>phone number: {cell}</li>
+      <li>
+        <span> email: </span> {email}
+      </li>
+      <li>
+        <span> phone number:</span> {cell}
+      </li>
     </ul>
   );
 };

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10vh;
 }
 
 .App-logo {
@@ -28,9 +29,8 @@
 }
 
 .container {
-  border-bottom: 2px solid #61dafb;
   padding: 40px 0 25px 0;
-  width: 75%;
+  width: 60%;
 }
 
 .dog-photos {
@@ -42,19 +42,74 @@
   max-height: 200px;
 }
 
+ul {
+  list-style: none;
+}
+
+span {
+  font-weight: 700;
+}
+
+.friend-emoji {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 15%;
+}
+
+.container.friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4e0928;
+}
+
 .loading {
-  position: fixed;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+}
+
+.container.dog .loading {
+  left: 50%;
+}
+
+.container.dog .btn {
+  background-color: #276474;
+  color: white;
 }
 
 .container.dog {
-  background-color: #61dafb;
+  color: #276474;
+}
+
+.joke-lines {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3px;
+}
+
+.container.joke {
+  color: #e49618;
+}
+
+.container:nth-child(odd) {
+  background: rgb(233, 233, 233);
+}
+
+.container:nth-child(even) {
+  background: rgb(243, 243, 243);
 }
 
 .btn {
-  padding: 20px;
-  font-size: 1rem;
+  padding: 20px 40px 20px 40px;
+  font-size: 1.2rem;
   border: none;
   border-radius: 5px;
+}
+
+.container.friends .btn {
+  background-color: #4e0928;
+  color: white;
 }
 
 .App-link {

@@ -1,14 +1,14 @@
 import "./App.css";
 import Friend from "./homework/1.FriendOnDemand";
 import DogGallery from "./homework/2.DogPhotoGallery";
-
-//https://www.randomuser.me/api?results=1
+import RandomJoke from "./homework/3.RandomJokeGenerator";
 
 function App() {
   return (
     <div className="App">
       <Friend />
       <DogGallery />
+      <RandomJoke />
     </div>
   );
 }
