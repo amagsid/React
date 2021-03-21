@@ -1,19 +1,28 @@
-const WeatherDescription = ({ city: { weather } }) => {
-  const main = weather[0].main;
-  const description = weather[0].description;
+const WeatherDescription = ({
+  weather: { name: city },
+  weather: { weather: description },
+  weather: {
+    sys: { country },
+  },
+}) => {
+  // const main = weather[0].main;
+  const condition = description[0];
   return (
     <div className="description">
-      <h3>{main}</h3>
-      <p>{description}</p>
+      <h3 className="city-country">
+        {city}, <span> {country} </span>
+      </h3>
+      <p>{condition.main}</p>
+      <p>{condition.description}</p>
     </div>
   );
 };
 
 const TempInfo = ({
-  city: {
-    main: { temp_max, temp_min },
+  weather: {
+    main: { temp_max: max, temp_min: min },
   },
-  city: {
+  weather: {
     coord: { lat, lon },
   },
 }) => {
@@ -21,8 +30,8 @@ const TempInfo = ({
 
   return (
     <div className="temp">
-      <p> min temp: {toCelcius(temp_min)}</p>
-      <p> max temp: {toCelcius(temp_max)}</p>
+      <p> min temp: {toCelcius(min)} </p>
+      <p> max temp: {toCelcius(max)} </p>
       <p>
         location: {lat} , {lon}
       </p>
@@ -30,14 +39,12 @@ const TempInfo = ({
   );
 };
 
-const WeatherInfo = ({ city, name, country }) => {
+const WeatherInfo = ({ weather }) => {
+  console.log(weather);
   return (
     <div className="weather">
-      <h2>
-        {name}, {country}
-      </h2>
-      <WeatherDescription city={city} />
-      <TempInfo city={city} />
+      <WeatherDescription weather={weather} />
+      <TempInfo weather={weather} />
     </div>
   );
 };

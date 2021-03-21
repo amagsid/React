@@ -1,19 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f6f6;
+  font-size: 16px;
+}
+
+*:focus {
+  outline: none;
+}
+
 .App {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  align-content: center;
+  text-align: center;
 }
 
 .city {
   border: 1px solid #282c34;
-  width: 30%;
+  min-width: 100%;
   margin-bottom: 60px;
+  text-align: left;
   padding: 0px 20px 0px 30px;
+  width: 300px;
 }
 
 .city h2 {
   padding-bottom: 20px;
+}
+
+.weather-app {
+  text-align: center;
+}
+
+.weather-app-form {
+  position: relative;
+  justify-content: space-around;
+  display: flex;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+input {
+  flex-grow: 1;
+  border: none;
+  padding: 20px 20px 20px 20px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+}
+
+button {
+  position: absolute;
+  border-radius: 30px;
+  height: 100%;
+  width: 30%;
+  right: 0;
+  font-size: 1.6rem;
+  color: whitesmoke;
+  transition: all 0.5s;
+  cursor: pointer;
+
+  border: none;
+  background-color: #3381adc5;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 .description {
@@ -21,14 +96,23 @@
   padding-bottom: 10px;
 }
 
-.weather {
-  line-height: 10px;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.temp {
+  line-height: 3px;
+}
+
+.city-country {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.city-country span {
+  font-weight: 700;
 }
 
 .App-header {
