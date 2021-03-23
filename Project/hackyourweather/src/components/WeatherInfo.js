@@ -12,8 +12,8 @@ const WeatherDescription = ({
       <h3 className="city-country">
         {city}, <span> {country} </span>
       </h3>
-      <p>{condition.main}</p>
-      <p>{condition.description}</p>
+      <p className="condition-main">{condition.main}</p>
+      <p className="condition-description">{condition.description}</p>
     </div>
   );
 };
@@ -30,17 +30,29 @@ const TempInfo = ({
 
   return (
     <div className="temp">
-      <p> min temp: {toCelcius(min)} </p>
-      <p> max temp: {toCelcius(max)} </p>
       <p>
-        location: {lat} , {lon}
+        min temp:
+        <span>
+          {toCelcius(min)} {"\u00b0"}
+        </span>
+      </p>
+      <p>
+        max temp:
+        <span>
+          {toCelcius(max)} {"\u00b0"}
+        </span>
+      </p>
+      <p>
+        location:
+        <span>
+          {lat} , {lon}
+        </span>
       </p>
     </div>
   );
 };
 
 const WeatherInfo = ({ weather }) => {
-  console.log(weather);
   return (
     <div className="weather">
       <WeatherDescription weather={weather} />
