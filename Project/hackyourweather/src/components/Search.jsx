@@ -15,6 +15,7 @@ const Search = () => {
 
   const ApiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
+  //data fetching//
   const getWeather = () => {
     setLoading(true);
     fetch(
@@ -33,7 +34,7 @@ const Search = () => {
         setLoading(false);
       })
       .catch((err) => {
-        err == "Error: Please enter a city to show weather"
+        err === "Error: Please enter a city to show weather"
           ? set400Error(true)
           : set404Error(true);
       })
@@ -44,7 +45,8 @@ const Search = () => {
     set404Error(false);
   };
 
-  // fetch useEffect
+  //functionality//
+  // fetch useEffect. I used the useRef hook here because I wanted to prevent useEffect from running on first render since that way it always returned an error
   useEffect(() => {
     if (didMount.current) getWeather();
     else didMount.current = true;

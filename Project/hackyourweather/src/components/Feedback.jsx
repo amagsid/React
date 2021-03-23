@@ -7,7 +7,7 @@ const Feedback = ({ className, text, loading }) => {
       <h3 className={className}>
         {/* spinning loading indicator */}
         {loading ? <VscLoading size={50} className="loading-icon" /> : null}
-        {className == "feedbcak error" ? (
+        {className === "feedbcak error" ? (
           <RiErrorWarningLine className="icon" />
         ) : null}
         {text}
