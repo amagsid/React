@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { VscLoading } from "react-icons/vsc";
 
 const DogGallery = () => {
   const [dogPhoto, setDogPhoto] = useState([]);
@@ -13,16 +14,15 @@ const DogGallery = () => {
         setLoading(true);
         setDogPhoto((prevArr) => [...prevArr, data.message]);
         setLoading(false);
-        console.log(dogPhoto);
       })
       .catch((err) => setError(err));
   };
 
   return (
     <div className="container dog">
-      {isLoading && <p className="loading">loading..</p>}
+      {isLoading && <VscLoading size={50} className="loading" />}
 
-      {dogPhoto.length == 0 && <h3> Click to get your first dog</h3>}
+      {dogPhoto.length === 0 && <h3> Click to get your first dog</h3>}
 
       <Button getDogPhoto={getDogPhoto} />
 

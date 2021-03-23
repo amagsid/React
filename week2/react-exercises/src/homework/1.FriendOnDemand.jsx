@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { VscLoading } from "react-icons/vsc";
 
 const Friend = () => {
   const [friend, setFriend] = useState(null);
@@ -26,12 +27,12 @@ const Friend = () => {
   return (
     <div className="container friends">
       <Button setClickCount={setClickCount} clickCount={clickCount} />
-      {isLoading && <p className="loading"> loading...</p>}
+      {isLoading && <VscLoading size={50} className="loading" />}
       {hasError && <p> something went wrong</p>}
       {friend && <FriendProfile friend={friend} />}
 
       <p>
-        {clickCount == 0
+        {clickCount === 0
           ? `You already got 1 freind`
           : `by now you have ${clickCount + 1} friends`}
       </p>
