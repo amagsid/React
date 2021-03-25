@@ -1,7 +1,7 @@
 import "./App.css";
-import HobbyList from "./1. ExtremeHobbies";
-import CustomerServiceEL from "./2. Perfect-customer-service";
-import Counter from "./3.HigherThan";
+import HobbyList from "./components/ExtremeHobbies";
+import CustomerServiceEL from "./components/Perfect-customer-service";
+import Counter from "./components/HigherThan";
 
 function App() {
   return (

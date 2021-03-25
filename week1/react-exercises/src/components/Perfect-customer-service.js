@@ -1,14 +1,14 @@
 import React from "react";
 
 //images
-import shippingImg from "./assets/exercises/f-delivery.png";
-import moneyImg from "./assets/exercises/coin.png";
-import chatImg from "./assets/exercises/chat.png";
+import shippingImg from "../assets/exercises/f-delivery.png";
+import moneyImg from "../assets/exercises/coin.png";
+import chatImg from "../assets/exercises/chat.png";
 
 const Guarantee = (props) => {
   return (
     <div className="el">
-      <img alt="" src={props.img}></img>
+      <img alt={props.title} src={props.img}></img>
       <h3> {props.title}</h3>
       <p> {props.description} </p>
     </div>
