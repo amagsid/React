@@ -10,7 +10,7 @@ const Search = () => {
   const [city, setCity] = useState(null);
 
   const useFetch = (url) => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [hasError, setError] = useState(null);
 
@@ -23,7 +23,7 @@ const Search = () => {
             throw res;
           })
           .then((data) => {
-            setData(data);
+            setData((oldWeather) => [...oldWeather, data]);
           })
           .catch((err) => setError(err))
           .finally(() => setLoading(false));
@@ -45,8 +45,6 @@ const Search = () => {
   const { data, isLoading, hasError } = useFetch(
     `${url}${city}&appid=${ApiKey}`
   );
-
-  console.log(data);
 
   return (
     <div className="weather-app">

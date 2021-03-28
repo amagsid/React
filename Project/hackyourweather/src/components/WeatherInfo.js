@@ -5,7 +5,6 @@ const WeatherDescription = ({
     sys: { country },
   },
 }) => {
-  // const main = weather[0].main;
   const condition = description[0];
   return (
     <div className="description">
@@ -53,11 +52,18 @@ const TempInfo = ({
 };
 
 const WeatherInfo = ({ weather }) => {
+  console.log(weather);
   return (
-    <div className="weather">
-      <WeatherDescription weather={weather} />
-      <TempInfo weather={weather} />
-    </div>
+    <>
+      {weather.map((city) => {
+        return (
+          <div className="card" key={city.id}>
+            <WeatherDescription weather={city} />
+            <TempInfo weather={city} />
+          </div>
+        );
+      })}
+    </>
   );
 };
 
