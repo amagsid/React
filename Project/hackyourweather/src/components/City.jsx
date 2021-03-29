@@ -1,9 +1,9 @@
 import WeatherInfo from "./WeatherInfo";
 
-const City = ({ weather }) => {
+const City = ({ weather, setData }) => {
   return (
     <div className="city">
-      <WeatherInfo weather={weather} />
+      <WeatherInfo setData={setData} weather={weather} />
     </div>
   );
 };

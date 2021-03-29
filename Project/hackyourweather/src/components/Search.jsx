@@ -7,10 +7,10 @@ const Search = () => {
   const url = `http://api.openweathermap.org/data/2.5/weather?q=`;
   const ApiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
   const [clickCount, setClickCount] = useState(0);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState(null || []);
 
   const useFetch = (url) => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null || []);
     const [isLoading, setLoading] = useState(false);
     const [hasError, setError] = useState(null);
 
@@ -39,10 +39,10 @@ const Search = () => {
       return () => clearTimeout(timeout);
     }, [hasError]);
 
-    return { data, isLoading, hasError };
+    return { data, setData, isLoading, hasError };
   };
 
-  const { data, isLoading, hasError } = useFetch(
+  const { data, setData, isLoading, hasError } = useFetch(
     `${url}${city}&appid=${ApiKey}`
   );
 
@@ -61,7 +61,7 @@ const Search = () => {
       )}
       {/* //form */}
       <div className="weather-app-form">
-        {!city ? <FaSearch className="search-icon" /> : null}
+        {city.length === 0 && <FaSearch className="search-icon" />}
 
         <input
           type="text"
@@ -69,12 +69,14 @@ const Search = () => {
           onChange={(e) => setCity(e.target.value)}
         />
 
-        <button
-          className="button"
-          onClick={() => setClickCount(clickCount + 1)}
-        >
-          <span>show weather </span>
-        </button>
+        {city.length > 0 && (
+          <button
+            className="button"
+            onClick={() => setClickCount(clickCount + 1)}
+          >
+            <span>show weather </span>
+          </button>
+        )}
       </div>
 
       {/* error hndlling */}
@@ -86,7 +88,7 @@ const Search = () => {
         />
       )}
       {isLoading && <Feedback className={"loading"} loading={true} />}
-      {data && <City weather={data} />}
+      {data && <City setData={setData} weather={data} />}
     </div>
   );
 };
