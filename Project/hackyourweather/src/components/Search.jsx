@@ -39,10 +39,14 @@ const Search = () => {
       return () => clearTimeout(timeout);
     }, [hasError]);
 
+    // if (data.find((city) => id === city.id)) {
+    //   console.log(data);
+    // }
+
     return { data, setData, isLoading, hasError };
   };
 
-  const { data, setData, isLoading, hasError } = useFetch(
+  const { data, isLoading, hasError } = useFetch(
     `${url}${city}&appid=${ApiKey}`
   );
 
@@ -78,17 +82,16 @@ const Search = () => {
           </button>
         )}
       </div>
-
       {/* error hndlling */}
-
       {hasError && hasError.status === 404 && (
         <Feedback
           className={"feedbcak error"}
           text={"Please enter a valid city name"}
         />
       )}
+
       {isLoading && <Feedback className={"loading"} loading={true} />}
-      {data && <City setData={setData} weather={data} />}
+      {data && <City weather={data} />}
     </div>
   );
 };

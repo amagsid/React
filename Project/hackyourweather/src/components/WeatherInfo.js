@@ -1,5 +1,4 @@
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 import { useState, useEffect } from "react";
 
 const WeatherDescription = ({
@@ -55,16 +54,16 @@ const TempInfo = ({
   );
 };
 
-const WeatherInfo = ({ weather, setData }) => {
-  const [newState, setNewState] = useState(null || []);
+const WeatherInfo = ({ weather }) => {
+  const [passedWeather, setPassedWeather] = useState(null || []);
 
   useEffect(() => {
-    setNewState(weather);
+    setPassedWeather(weather);
   }, [weather]);
 
   return (
     <>
-      {newState.map((city) => {
+      {passedWeather.map((city) => {
         // console.log(city.id);
         return (
           <div className="card" id={city.id}>
@@ -78,8 +77,7 @@ const WeatherInfo = ({ weather, setData }) => {
               id={city.id}
               onClick={(e) => {
                 const id = parseInt(e.target.getAttribute("id"));
-                console.log(id);
-                setNewState((currentCities) =>
+                setPassedWeather((currentCities) =>
                   currentCities.filter((city) => city.id !== id)
                 );
               }}
