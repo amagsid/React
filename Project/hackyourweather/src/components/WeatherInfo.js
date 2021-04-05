@@ -1,5 +1,6 @@
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const WeatherDescription = ({
   weather: { name: city },
@@ -64,27 +65,28 @@ const WeatherInfo = ({ weather }) => {
   return (
     <>
       {passedWeather.map((city) => {
-        // console.log(city.id);
         return (
-          <div className="card" id={city.id}>
-            <div className="weather-info">
-              <WeatherDescription weather={city} />
-              <TempInfo weather={city} />
-            </div>
+          <Link to={`/${city.id}`}>
+            <div className="card" id={city.id}>
+              <div className="weather-info">
+                <WeatherDescription weather={city} />
+                <TempInfo weather={city} />
+              </div>
 
-            <RiDeleteBin2Fill
-              size={30}
-              id={city.id}
-              onClick={(e) => {
-                const id = parseInt(e.target.getAttribute("id"));
-                setPassedWeather((currentCities) =>
-                  currentCities.filter((city) => city.id !== id)
-                );
-              }}
-              className="delete-icon"
-              fontSize="large"
-            />
-          </div>
+              <RiDeleteBin2Fill
+                size={30}
+                id={city.id}
+                onClick={(e) => {
+                  const id = parseInt(e.target.getAttribute("id"));
+                  setPassedWeather((currentCities) =>
+                    currentCities.filter((city) => city.id !== id)
+                  );
+                }}
+                className="delete-icon"
+                fontSize="large"
+              />
+            </div>
+          </Link>
         );
       })}
     </>

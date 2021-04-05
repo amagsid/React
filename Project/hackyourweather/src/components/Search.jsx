@@ -39,10 +39,6 @@ const Search = () => {
       return () => clearTimeout(timeout);
     }, [hasError]);
 
-    // if (data.find((city) => id === city.id)) {
-    //   console.log(data);
-    // }
-
     return { data, setData, isLoading, hasError };
   };
 
@@ -89,8 +85,8 @@ const Search = () => {
           text={"Please enter a valid city name"}
         />
       )}
-
       {isLoading && <Feedback className={"loading"} loading={true} />}
+
       {data && <City weather={data} />}
     </div>
   );
