@@ -71,7 +71,7 @@ const Search = () => {
 
         {city.length > 0 && (
           <button
-            className="button"
+            className="search-button"
             onClick={() => setClickCount(clickCount + 1)}
           >
             <span>show weather </span>

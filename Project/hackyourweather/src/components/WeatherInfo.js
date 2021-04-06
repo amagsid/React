@@ -1,4 +1,5 @@
 import { RiDeleteBin2Fill } from "react-icons/ri";
+import { AiOutlineAreaChart } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -66,27 +67,34 @@ const WeatherInfo = ({ weather }) => {
     <>
       {passedWeather.map((city) => {
         return (
-          <Link to={`/${city.id}`}>
-            <div className="card" id={city.id}>
+          <div className="card" id={city.id}>
+            <Link style={{ textDecoration: "none" }} to={`/${city.id}`}>
               <div className="weather-info">
                 <WeatherDescription weather={city} />
-                <TempInfo weather={city} />
-              </div>
 
-              <RiDeleteBin2Fill
-                size={30}
-                id={city.id}
-                onClick={(e) => {
-                  const id = parseInt(e.target.getAttribute("id"));
-                  setPassedWeather((currentCities) =>
-                    currentCities.filter((city) => city.id !== id)
-                  );
-                }}
-                className="delete-icon"
-                fontSize="large"
-              />
-            </div>
-          </Link>
+                <TempInfo weather={city} />
+                <h5 className={"forecast"}>
+                  <span>5-day forecast</span>
+                  <AiOutlineAreaChart
+                    size={20}
+                    className={"chart-icon"}
+                  ></AiOutlineAreaChart>
+                </h5>
+              </div>
+            </Link>
+            <RiDeleteBin2Fill
+              size={30}
+              id={city.id}
+              onClick={(e) => {
+                const id = parseInt(e.target.getAttribute("id"));
+                setPassedWeather((currentCities) =>
+                  currentCities.filter((city) => city.id !== id)
+                );
+              }}
+              className="delete-icon"
+              fontSize="large"
+            />
+          </div>
         );
       })}
     </>

@@ -22,15 +22,6 @@ body {
   text-align: center;
 }
 
-.city {
-  color: white;
-  min-width: 75%;
-}
-
-.city h2 {
-  padding-bottom: 20px;
-}
-
 .weather-app {
   position: relative;
   display: flex;
@@ -47,30 +38,48 @@ body {
   width: 100%;
 }
 
+.chart {
+  margin-top: 50px;
+}
+
 .chart-container {
-  background-color: #f5f5f5;
+  transition: transform 0.4s;
+}
+
+.chart-container:hover {
+  transform: scale(1.09);
+}
+
+.date {
+  color: #43b3ad;
 }
 
 .card {
   margin-bottom: 10px;
-  background-color: #43b3ad;
+  background-image: linear-gradient(to right top, #43b3ad, #1bc6a3);
   border-radius: 10px;
   display: flex;
   height: 250px;
+  min-width: 65%;
   text-align: left;
   align-items: center;
-  /* padding-left: 20px; */
-  justify-content: space-around;
+  padding: 40px;
+  justify-content: space-between;
 }
 
 .delete-icon {
-  color: rgba(221, 46, 46, 0.883);
+  color: #c3423f;
   cursor: pointer;
+}
+
+.chart-icon {
+  margin-right: 5px;
 }
 
 .weather-info {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .feedbcak {
@@ -99,6 +108,44 @@ body {
   -webkit-animation: spin 0.5s linear infinite;
   -moz-animation: spin 0.5s linear infinite;
   animation: spin 0.5s linear infinite;
+}
+
+.forecast {
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  text-align: left;
+  transition: all 0.5s;
+  padding: 5px 0px 5px 0px;
+  border-radius: 10px;
+  margin: 0;
+  width: 60%;
+  background-image: linear-gradient(to bottom, #6ce35f, #35d689, #6ce35f);
+}
+
+.forecast span {
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.forecast span:after {
+  content: "\00bb";
+  position: relative;
+  opacity: 0;
+  top: 0;
+  right: -25px;
+  transition: 0.3s;
+}
+
+.forecast:hover {
+  transform: scale(1.05);
+}
+
+.forecast:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 @-moz-keyframes spin {
@@ -134,7 +181,7 @@ input {
   text-shadow: 0px 0px 1px #43b3adb0;
 }
 
-button {
+.search-button {
   position: absolute;
   border-radius: 30px;
   height: 100%;
@@ -145,17 +192,41 @@ button {
   transition: all 0.5s;
   cursor: pointer;
   border: none;
-  background-color: #43b3ae;
+  background-image: linear-gradient(
+    to right top,
+    #43b3ad,
+    #1bc6a3,
+    #35d689,
+    #6ce35f
+  );
 }
 
-.button span {
+.back-botton {
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  cursor: pointer;
+  border: none;
+  background-image: linear-gradient(
+    to right top,
+    #43b3ad,
+    #1bc6a3,
+    #35d689,
+    #6ce35f
+  );
+}
+
+.search-button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button span:after {
+.search-button span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -164,17 +235,17 @@ button {
   transition: 0.5s;
 }
 
-.button:hover span {
+.search-button:hover span {
   padding-right: 25px;
 }
 
-.button:hover span:after {
+.search-button:hover span:after {
   opacity: 1;
   right: 0;
 }
 
 .description {
-  line-height: 5px;
+  line-height: 0.5px;
   padding-bottom: 5px;
 }
 

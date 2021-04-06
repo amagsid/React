@@ -1,11 +1,7 @@
 import WeatherInfo from "./WeatherInfo";
 
 const City = ({ weather, setData }) => {
-  return (
-    <div className="city">
-      <WeatherInfo setData={setData} weather={weather} />
-    </div>
-  );
+  return <WeatherInfo setData={setData} weather={weather} />;
 };
 
 export default City;
